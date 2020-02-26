@@ -1,28 +1,10 @@
 # get all modules without version numbers from a requirements_01.txt file
 from os import access, R_OK, W_OK
-from os.path import exists, join, dirname
 from shutil import copy2
+from file_handling import overwrite_file
 
 
-def overwrite_file(filename):
-    """loop until overwrite existing file or input of a new filename is true"""
-    dump_file = False
-    while not dump_file:
-        if exists(filename):
-            overwrite = input(f"overwrite {filename} (y/n): ")
-            if overwrite in ["y", "Y"]:
-                dump_file = True
-            if overwrite in ["n", "N"]:
-                new_name = input(f"new filename: ")
-                filename = join(dirname(filename), new_name)
-                print(filename)
-        else:
-            dump_file = True
-
-    return filename
-
-
-def strip_version_numbers(f='requirements.txt', f_old='requirements_old.txt'):
+def strip_version_numbers(f='requirements_result.txt', f_old='requirements_old.txt'):
     if access(f, R_OK and W_OK):
         try:
             f_old = overwrite_file(f_old)
