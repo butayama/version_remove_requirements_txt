@@ -30,7 +30,9 @@ def strip_version_numbers(f='requirements.txt', f_old='requirements_old.txt'):
         except IOError:
             print(f"file {f} could not be copied to {f_old} ")
     else:
-        print(f"file {f} is not accessible for read or write operations.")
+        print(f"file {f} is not accessible for read or write operations.\n")
+        print(" Program aborted")
+        return
     with open(f, 'w') as file_out:
         with open(f_old) as file_object:
             for line in file_object:
