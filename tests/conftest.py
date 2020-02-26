@@ -17,6 +17,12 @@ def pickle_test_env(tmpdir_factory):
 
 
 @pytest.fixture()
+def requirements_test_env(tmpdir_factory):
+    a_dir = tmpdir_factory.mktemp('requirements_dir')
+    return a_dir
+
+
+@pytest.fixture()
 def dic_angles():
     return {"C": 27.1, "S": -8.2, "T": 29.7}
 
