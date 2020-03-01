@@ -1,4 +1,4 @@
-from scripts.edit_requirements import strip_version_numbers
+from edit_requirements import strip_version_numbers
 from shutil import copy2
 from os.path import join
 

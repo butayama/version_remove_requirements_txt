@@ -4,7 +4,7 @@ from shutil import copy2
 from file_handling import overwrite_file
 
 
-def strip_version_numbers(f='requirements_result.txt', f_old='requirements_old.txt'):
+def strip_version_numbers(f='requirements.txt', f_old='requirements_old.txt'):
     if access(f, R_OK and W_OK):
         try:
             f_old = overwrite_file(f_old)

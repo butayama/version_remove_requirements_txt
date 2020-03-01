@@ -1,7 +1,5 @@
 from os.path import join, exists
-import scripts.file_handling as fh
-from io import StringIO
-import pytest
+import file_handling as fh
 
 
 def test_verify_path(pickle_test_env):
