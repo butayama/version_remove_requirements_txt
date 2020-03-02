@@ -27,3 +27,83 @@ flask shell
 Programm starten
 ----------------
 flask run
+
+
+Deploy an app on heroku
+=======================
+First deploy
+------------
+Creating an application
+-----------------------
+heroku create \<appname>  
+git remote show heroku  
+heroku config:set FLASK_APP=flasky.py  
+
+Provisioning a database  
+-----------------------
+heroku addons:create heroku-postgresql:hobby-dev  
+
+Configuring logging
+-------------------
+heroku config:set FLASK_CONFIG=heroku
+heroku config:set SECRET_KEY=  
+
+Configuring email
+-----------------
+heroku config:set MAIL_USERNAME=<your-gmail-username>  
+heroku config:set MAIL_PASSWORD=<your-gmail-password>  
+
+Adding a top-level requirements file
+------------------------------------
+Example 17-4. requirements.txt: Heroku requirements file  
+-r requirements/heroku.txt  
+
+Enabling Secure HTTP with Flask-SSLify
+--------------------------------------
+
+Running a production web server
+-------------------------------
+**Warning: The Gunicorn web server does not work on Microsoft Windows**  
+(venv) $ pip install gunicorn  
+To run the application locally under Gunicorn, use the following command:  
+(venv) $ gunicorn flasky:
+
+Adding a Procfile
+-----------------
+Example 17-8. Procfile: Heroku Procfile  
+web: gunicorn flasky:app
+
+Testing with Heroku Local
+=========================
+the .env file can contain the following variables:
+
+FLASK_APP=flasky.py  
+FLASK_CONFIG=heroku  
+MAIL_USERNAME=<your-gmail-username>  
+MAIL_PASSWORD=<your-gmail-password>  
+
+**Warning  
+Because the .env file contains passwords and other sensitive account information, it should never be added to 
+source control.**
+
+heroku local:run flask deploy  
+
+heroku local  
+
+Deploying with git push
+=======================
+git push heroku master  
+heroku run flask deploy  
+heroku restart
+
+Reviewing application logs
+--------------------------
+heroku logs -t
+
+Deploying an Upgrade
+====================
+heroku maintenance:on  
+git push heroku master  
+heroku run flask deploy  
+heroku restart  
+heroku maintenance:off
