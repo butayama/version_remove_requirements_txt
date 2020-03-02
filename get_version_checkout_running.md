@@ -36,6 +36,7 @@ First deploy
 Creating an application
 -----------------------
 heroku create \<appname>  
+**Name must start with a letter, end with a letter or digit and can only contain lowercase letters, digits, and dashes**  
 git remote show heroku  
 heroku config:set FLASK_APP=flasky.py  
 
@@ -43,13 +44,11 @@ Provisioning a database
 -----------------------
 heroku addons:create heroku-postgresql:hobby-dev  
 
-Configuring logging
+Configuring logging and email
 -------------------
+**In password-manager speichern**  
 heroku config:set FLASK_CONFIG=heroku
 heroku config:set SECRET_KEY=  
-
-Configuring email
------------------
 heroku config:set MAIL_USERNAME=<your-gmail-username>  
 heroku config:set MAIL_PASSWORD=<your-gmail-password>  
 
