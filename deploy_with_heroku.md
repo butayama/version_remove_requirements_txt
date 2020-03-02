@@ -17,7 +17,7 @@ Flask testen
 ------------
 flask test
 
-_You can run the unit test suite like this every time you want to confirm everything is working as expected. Having the automation in place makes verifying this feature very low cost, so testing should be repeated often, to ensure that this functionality does not break in the future._
+You can run the unit test suite like this every time you want to confirm everything is working as expected. Having the automation in place makes verifying this feature very low cost, so testing should be repeated often, to ensure that this functionality does not break in the future._
 
 
 Flask Shell starten:
@@ -31,6 +31,30 @@ flask run
 
 Deploy an app on heroku
 =======================
+
+SSH public key
+--------------
+
+It is important that your SSH public key is uploaded to Heroku, as this is what enables the git push command.  
+display your SSH keys
+
+USAGE
+  $ heroku keys
+
+OPTIONS
+  -l, --long  display full SSH keys
+  --json      output in json format
+
+COMMANDS
+  keys:add     add an SSH key for a user
+  keys:clear   remove all SSH keys for current user
+  keys:remove  remove an SSH key from the user
+
+push from the master branch
+---------------------------
+Note that Heroku only deploys code that you push to the master branch of the heroku remote. Pushing code to another branch of the remote has no effect.
+
+
 First deploy
 ------------
 Creating an application
@@ -89,8 +113,14 @@ heroku local:run flask deploy
 
 heroku local  
 
+
+
 Deploying with git push
 =======================
+
+Funktioniert nur mit einem gültigen SSH Zertifikat
+==================================================
+
 git push heroku master  
 heroku run flask deploy  
 heroku restart
@@ -106,3 +136,6 @@ git push heroku master
 heroku run flask deploy  
 heroku restart  
 heroku maintenance:off
+
+Funktioniert nur mit einem gültigen SSH Zertifikat
+==================================================
