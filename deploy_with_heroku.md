@@ -28,9 +28,16 @@ Programm starten
 ----------------
 flask run
 
+Install the Heroku CLI
+======================
+Source:  
+https://devcenter.heroku.com/articles/heroku-cli
+
 
 Deploy an app on heroku
 =======================
+
+**Achtung: Für Windows Plattformen teilweise andere Module verwenden!**
 
 SSH public key
 --------------
